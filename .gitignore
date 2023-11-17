@@ -1,13 +1,10 @@
 .env
 .idea
 node_modules/
-docs/
-other/
 files/*.docx
 files/*.xls
 files/*.xlsx
 log/
-_indexes/
 yarn.lock
 package-lock.json
 _deleteme/
