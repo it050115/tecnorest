@@ -1,0 +1,126 @@
+// Create new agent without Authorization
+POST http://localhost:5000/api/v1/agents HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+{
+  "title" : "fourthAgentName",
+  "code" : "TestFunction4()"
+}
+
+###
+
+// Get Agents List without Authorization
+GET http://localhost:5000/api/v1/agents HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Get Agents List without Authorization and caching
+GET http://localhost:5000/api/v1/redisagents HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Get Agents List without Authorization and caching
+GET https://portaltest.crowdservices.it/api/v1/redisagents HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Get single Agent without Authorization
+GET http://localhost:5000/api/v1/agents/652a9bfd63580958b064b54f HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Update Agent by id without Authorization
+PATCH http://localhost:5000/api/v1/agents/652a9bfd63580958b064b54f HTTP/1.1
+User-Agent: restbox
+Content-Type: application/jsons
+
+{
+  "active" : true
+}
+
+###
+
+// Delete Agent by id without Authorization
+DELETE http://localhost:5000/api/v1/agents/630e411093036dcb883528d8 HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Get System Dashboard Widgets data without Authorization
+GET http://localhost:5000/api/v1/dashboards/system HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Get test
+GET http://localhost:5000/api/v1/oauth2/federated/google HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+GET https://portaltest.crowdservices.it/api/v1/oauth2/federated/google HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Get Agent with Authorization
+GET http://localhost:5000/api/v1/agents/62696c6a50bea7120d77b982 HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNjk2YzZhNTBiZWE3MTIwZDc3Yjk4MiIsImF1ZCI6ImFkbWluIiwic3ViIjoiR3VnbGllbG1vIEZhcmluYSIsImlzcyI6IkNyb3dkIiwiaWF0IjoxNjU4MTYzNjA0LCJleHAiOjE2NTgxNjM5MDR9.mK-ATDz7cL8IRhx3QtHU48Qd1lzy0Zl2rzNYY7E_5YQ
+
+###
+
+// Get Agent with fake Authorization
+GET http://localhost:5000/api/v1/agents/60805b2be7db3045aa18aea0 HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+Authorization: Bearer xxxxxxxx.eyJ1c2VySWQiOiI2MDgwNWIyYmU3ZGIzMDQ1YWExOGFlYTAiLCJlbWFpbCI6Imd1Z2xpZWxtby5mYXJpbmFAbWFpbC5jb20iLCJwZXJtaXNzaW9uTGV2ZWwiOjIwNDgsInByb3ZpZGVyIjoiZW1haWwiLCJuYW1lIjoiR3VnbGllbG1vIEZhcmluYSIsInJlZnJlc2hLZXkiOiJ0NzRkNnJEc3ZIREx6cEsxWDJwZTFRPT0iLCJpYXQiOjE2NTAzNzQ0MDV9.mcZvCnJ6mioviWVhVElowXvS3G3TO6xhP1lUqTGk2Vw
+
+###
+
+// Get Agent List with Authirization
+GET http://localhost:5000/api/v1/agents HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU0NzYwNzcxZDA0NjNmMWExOGFhNzMiLCJlbWFpbCI6ImNhbm9uLmV1cm9wZUBtYWlsLmNvbSIsInBlcm1pc3Npb25MZXZlbCI6NCwicHJvdmlkZXIiOiJlbWFpbCIsIm5hbWUiOiJDYW5vbiBFdXJvcGUiLCJyZWZyZXNoS2V5IjoiTFBISEJCWm0yaTgxWkhIS0VlS2JQZz09IiwiaWF0IjoxNjI1NjU3MDQ1fQ.KgXWIsjSwyznCl_WOAKaIF2zj4hxGKgvvTTe5kRXVPs
+
+###
+
+// Update Agent by id with Authirization
+PATCH http://localhost:5000/api/v1/agents/6009776f857c3348f3e2a33f HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU0NzYwNzcxZDA0NjNmMWExOGFhNzMiLCJlbWFpbCI6ImNhbm9uLmV1cm9wZUBtYWlsLmNvbSIsInBlcm1pc3Npb25MZXZlbCI6NCwicHJvdmlkZXIiOiJlbWFpbCIsIm5hbWUiOiJDYW5vbiBFdXJvcGUiLCJyZWZyZXNoS2V5IjoiTFBISEJCWm0yaTgxWkhIS0VlS2JQZz09IiwiaWF0IjoxNjI1NjU3MDQ1fQ.KgXWIsjSwyznCl_WOAKaIF2zj4hxGKgvvTTe5kRXVPs
+
+{
+  "active" : true,
+}
+
+###
+
+// Delete Agent by id with Authorization
+DELETE http://localhost:5000/api/v1/agents/6009776f857c3348f3e2a33f HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MDA5Nzc2Zjg1N2MzMzQ4ZjNlMmEzM2YiLCJlbWFpbCI6Im1hcmNvcy5zaWx2YUBtYWlsLmNvbSIsInBlcm1pc3Npb25MZXZlbCI6NSwicHJvdmlkZXIiOiJlbWFpbCIsIm5hbWUiOiJNYXJjb3MgU2lsdmEiLCJyZWZyZXNoS2V5IjoienZuZTJLaVFueWM5dkdBZUhJNENXZz09IiwiaWF0IjoxNjExMjQ0NTU5fQ.E7CgwuBSU8PCOe_l-yrn9SMFS7HkFgTE_vPFz3KBS34
+
+###
+
+// Get Agents List without Authorization
+GET http://localhost:5000/api/v1/fake HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###

@@ -1,0 +1,10 @@
+{
+	"req": {
+		"method": "post",
+		"url": "http://127.0.0.1:53621/ws/v1/greatings?wsdl",
+		"data": "<soap:Envelope xmlns:soap=\"http://www.w3.org/2003/05/soap-envelope\" xmlns:rec=\"http://test.web.smg.ms1.eu.gxs.com/gxs/ms/ws/provider/services/receiveWS\"><soap:Header><Security><Username>username</Username><Password>password</Password></Security></soap:Header><soap:Body><rec:GreatingsRequest xmlns=\"http://crowdservices.it/\"><message>id1:12:34:56:out42</message><splitter>:</splitter><actionrequest>upload</actionrequest><userid>IT_CROWD_TPM</userid><password>password</password></rec:GreatingsRequest></soap:Body></soap:Envelope>",
+		"headers": { "user-agent": "node-superagent/3.8.3", "content-type": "application/xml" }
+	},
+	"header": { "vary": "Origin", "access-control-allow-credentials": "true", "content-type": "application/xml", "date": "Wed, 17 May 2023 10:57:35 GMT", "connection": "close", "transfer-encoding": "chunked" },
+	"status": 200
+}

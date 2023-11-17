@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="integrations_service" targetNamespace="http://localhost:3000/integrations_service" xmlns="http://localhost:3000/integrations_service" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <wsdl:message name="getSnapshotGIGARequest">
+    <wsdl:part name="user" type="xs:string" />
+    <wsdl:part name="password" type="xs:string" />
+  </wsdl:message>
+
+  <wsdl:message name="getSnapshotGIGAResponse">
+    <wsdl:part name="res" type="xs:string" />
+  </wsdl:message>
+
+  <wsdl:portType name="pull_integrations">
+    <wsdl:operation name="getSnapshotGIGA">
+      <wsdl:input message="getSnapshotGIGARequest" />
+      <wsdl:output message="getSnapshotGIGAResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="pull_integrations_binding" type="pull_integrations">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getSnapshotGIGA">
+      <soap:operation soapAction="getSnapshotGIGA" />
+      <wsdl:input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="integrations">
+    <wsdl:documentation>WSDL File for integrations</wsdl:documentation>
+    <wsdl:port binding="pull_integrations_binding" name="pull">
+      <soap:address location="http://localhost:3000/integrations_service" />
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>

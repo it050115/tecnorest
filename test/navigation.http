@@ -1,0 +1,47 @@
+// Create new item without Authorization
+POST http://localhost:5000/api/v1/settings/menuitems HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+{
+  "id": "portaConfiguration",
+	"title": "Portal Configuration",
+	"subtitle": "Portal system interface",
+	"type": "group",
+	"icon": "heroicons-outline:template",
+	"translate": "CONFIGURAZIONE PORTALE"
+}
+
+###
+
+// Get items List without Authorization
+GET http://localhost:5000/api/v1/settings/menuitems HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Get single item without Authorization
+GET http://localhost:5000/api/v1/settings/menuitems/637f847b6ececec5c1b19f64 HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+// Update Agent by id without Authorization
+PATCH http://localhost:5000/api/v1/settings/menuitems/637f847b6ececec5c1b19f64 HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+{
+  "active" : true
+}
+
+###
+
+// Delete Agent by id without Authorization
+DELETE http://localhost:5000/api/v1/settings/menuitems/637f847b6ececec5c1b19f64 HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###

@@ -1,0 +1,12 @@
+
+GET http://localhost:5000/api/v1/sites HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###
+
+GET http://localhost:5000/api/v1/sites/4 HTTP/1.1
+User-Agent: restbox
+Content-Type: application/json
+
+###

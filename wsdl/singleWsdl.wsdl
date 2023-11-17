@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="WSConnector" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing">
+   <wsdl:types>
+      <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/">
+         <xs:element name="anyType" nillable="true" type="xs:anyType" />
+         <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+         <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+         <xs:element name="boolean" nillable="true" type="xs:boolean" />
+         <xs:element name="byte" nillable="true" type="xs:byte" />
+         <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+         <xs:element name="decimal" nillable="true" type="xs:decimal" />
+         <xs:element name="double" nillable="true" type="xs:double" />
+         <xs:element name="float" nillable="true" type="xs:float" />
+         <xs:element name="int" nillable="true" type="xs:int" />
+         <xs:element name="long" nillable="true" type="xs:long" />
+         <xs:element name="QName" nillable="true" type="xs:QName" />
+         <xs:element name="short" nillable="true" type="xs:short" />
+         <xs:element name="string" nillable="true" type="xs:string" />
+         <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+         <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+         <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+         <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+         <xs:element name="char" nillable="true" type="tns:char" />
+         <xs:simpleType name="char">
+            <xs:restriction base="xs:int" />
+         </xs:simpleType>
+         <xs:element name="duration" nillable="true" type="tns:duration" />
+         <xs:simpleType name="duration">
+            <xs:restriction base="xs:duration">
+               <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+               <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+               <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+            </xs:restriction>
+         </xs:simpleType>
+         <xs:element name="guid" nillable="true" type="tns:guid" />
+         <xs:simpleType name="guid">
+            <xs:restriction base="xs:string">
+               <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+            </xs:restriction>
+         </xs:simpleType>
+         <xs:attribute name="FactoryType" type="xs:QName" />
+         <xs:attribute name="Id" type="xs:ID" />
+         <xs:attribute name="Ref" type="xs:IDREF" />
+      </xs:schema>
+      <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/">
+         <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+         <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+         <xs:complexType name="WSCOperationFault">
+            <xs:sequence>
+               <xs:element minOccurs="0" name="Exception" nillable="true" type="q1:Exception" xmlns:q1="http://schemas.datacontract.org/2004/07/System" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="WSCOperationFault" nillable="true" type="tns:WSCOperationFault" />
+         <xs:complexType name="GetTokenParams">
+            <xs:complexContent mixed="false">
+               <xs:extension base="tns:TokenBaseParams">
+                  <xs:sequence>
+                     <xs:element minOccurs="0" name="LogonProvider" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="SourceApplication" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="TokenMode" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="TrustedPassword" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="TrustedToken" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="TrustedUsername" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+                  </xs:sequence>
+               </xs:extension>
+            </xs:complexContent>
+         </xs:complexType>
+         <xs:element name="GetTokenParams" nillable="true" type="tns:GetTokenParams" />
+         <xs:complexType name="TokenBaseParams">
+            <xs:sequence>
+               <xs:element minOccurs="0" name="ApiKey" type="ser:guid" />
+               <xs:element minOccurs="0" name="ClientApplicationID" type="ser:guid" />
+            </xs:sequence>
+         </xs:complexType>
+         <xs:element name="TokenBaseParams" nillable="true" type="tns:TokenBaseParams" />
+         <xs:complexType name="GetTokenInfoParams">
+            <xs:complexContent mixed="false">
+               <xs:extension base="tns:TokenBaseParams">
+                  <xs:sequence>
+                     <xs:element minOccurs="0" name="AccessToken" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="TrustedPassword" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="TrustedUsername" nillable="true" type="xs:string" />
+                  </xs:sequence>
+               </xs:extension>
+            </xs:complexContent>
+         </xs:complexType>
+         <xs:element name="GetTokenInfoParams" nillable="true" type="tns:GetTokenInfoParams" />
+         <xs:complexType name="RefreshTokenParams">
+            <xs:complexContent mixed="false">
+               <xs:extension base="tns:TokenBaseParams">
+                  <xs:sequence>
+                     <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+                  </xs:sequence>
+               </xs:extension>
+            </xs:complexContent>
+         </xs:complexType>
+         <xs:element name="RefreshTokenParams" nillable="true" type="tns:RefreshTokenParams" />
+         <xs:complexType name="RevokeTokenParams">
+            <xs:complexContent mixed="false">
+               <xs:extension base="tns:TokenBaseParams">
+                  <xs:sequence>
+                     <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+                     <xs:element minOccurs="0" name="Username" nillable="true" type="xs:string" />
+                  </xs:sequence>
+               </xs:extension>
+            </xs:complexContent>
+         </xs:complexType>
+         <xs:element name="RevokeTokenParams" nillable="true" type="tns:RevokeTokenParams" />
+      </xs:schema>
+      <xs:schema elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.datacontract.org/2004/07/System" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/">
+         <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+         <xs:complexType name="Exception">
+            <xs:sequence>
+               <xs:any minOccurs="0" maxOccurs="unbounded" namespace="##local" processContents="skip" />
+            </xs:sequence>
+            <xs:attribute ref="ser:FactoryType" />
+         </xs:complexType>
+         <xs:element name="Exception" nillable="true" type="tns:Exception" />
+      </xs:schema>
+      <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+         <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+         <xs:import namespace="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+         <xs:element name="Execute">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="xml" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="ExecuteResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="ExecuteResult" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="ExecuteEx">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="xml" nillable="true">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:any minOccurs="0" processContents="lax" />
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="ExecuteExResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="ExecuteExResult" nillable="true">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:any minOccurs="0" processContents="lax" />
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="ChangePassword">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="clientApplicationID" type="q1:guid" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/" />
+                  <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+                  <xs:element minOccurs="0" name="oldpassword" nillable="true" type="xs:string" />
+                  <xs:element minOccurs="0" name="newpassword" nillable="true" type="xs:string" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="ChangePasswordResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="ChangePasswordResult" nillable="true">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:any minOccurs="0" processContents="lax" />
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="GetToken">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="params" nillable="true" type="q2:GetTokenParams" xmlns:q2="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="GetTokenResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="GetTokenResult" nillable="true">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:any minOccurs="0" processContents="lax" />
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="GetTokenInfo">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="params" nillable="true" type="q3:GetTokenInfoParams" xmlns:q3="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="GetTokenInfoResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="GetTokenInfoResult" nillable="true">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:any minOccurs="0" processContents="lax" />
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="RefreshToken">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="params" nillable="true" type="q4:RefreshTokenParams" xmlns:q4="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="RefreshTokenResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="RefreshTokenResult" nillable="true">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:any minOccurs="0" processContents="lax" />
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="RevokeToken">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="params" nillable="true" type="q5:RevokeTokenParams" xmlns:q5="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+         <xs:element name="RevokeTokenResponse">
+            <xs:complexType>
+               <xs:sequence>
+                  <xs:element minOccurs="0" name="RevokeTokenResult" nillable="true">
+                     <xs:complexType>
+                        <xs:sequence>
+                           <xs:any minOccurs="0" processContents="lax" />
+                        </xs:sequence>
+                     </xs:complexType>
+                  </xs:element>
+               </xs:sequence>
+            </xs:complexType>
+         </xs:element>
+      </xs:schema>
+   </wsdl:types>
+   <wsdl:message name="IWSConnector_Execute_InputMessage">
+      <wsdl:part name="parameters" element="tns:Execute" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_Execute_OutputMessage">
+      <wsdl:part name="parameters" element="tns:ExecuteResponse" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_ExecuteEx_InputMessage">
+      <wsdl:part name="parameters" element="tns:ExecuteEx" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_ExecuteEx_OutputMessage">
+      <wsdl:part name="parameters" element="tns:ExecuteExResponse" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_ChangePassword_InputMessage">
+      <wsdl:part name="parameters" element="tns:ChangePassword" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_ChangePassword_OutputMessage">
+      <wsdl:part name="parameters" element="tns:ChangePasswordResponse" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_ChangePassword_WSCOperationFaultFault_FaultMessage">
+      <wsdl:part name="detail" element="q1:WSCOperationFault" xmlns:q1="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_GetToken_InputMessage">
+      <wsdl:part name="parameters" element="tns:GetToken" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_GetToken_OutputMessage">
+      <wsdl:part name="parameters" element="tns:GetTokenResponse" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_GetToken_WSCOperationFaultFault_FaultMessage">
+      <wsdl:part name="detail" element="q2:WSCOperationFault" xmlns:q2="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_GetTokenInfo_InputMessage">
+      <wsdl:part name="parameters" element="tns:GetTokenInfo" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_GetTokenInfo_OutputMessage">
+      <wsdl:part name="parameters" element="tns:GetTokenInfoResponse" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_GetTokenInfo_WSCOperationFaultFault_FaultMessage">
+      <wsdl:part name="detail" element="q3:WSCOperationFault" xmlns:q3="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_RefreshToken_InputMessage">
+      <wsdl:part name="parameters" element="tns:RefreshToken" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_RefreshToken_OutputMessage">
+      <wsdl:part name="parameters" element="tns:RefreshTokenResponse" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_RefreshToken_WSCOperationFaultFault_FaultMessage">
+      <wsdl:part name="detail" element="q4:WSCOperationFault" xmlns:q4="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_RevokeToken_InputMessage">
+      <wsdl:part name="parameters" element="tns:RevokeToken" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_RevokeToken_OutputMessage">
+      <wsdl:part name="parameters" element="tns:RevokeTokenResponse" />
+   </wsdl:message>
+   <wsdl:message name="IWSConnector_RevokeToken_WSCOperationFaultFault_FaultMessage">
+      <wsdl:part name="detail" element="q5:WSCOperationFault" xmlns:q5="http://schemas.datacontract.org/2004/07/PAT.CRM.WSC4.Runtime" />
+   </wsdl:message>
+   <wsdl:portType name="IWSConnector">
+      <wsdl:operation name="Execute">
+         <wsdl:input wsaw:Action="http://tempuri.org/IWSConnector/Execute" message="tns:IWSConnector_Execute_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IWSConnector/ExecuteResponse" message="tns:IWSConnector_Execute_OutputMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="ExecuteEx">
+         <wsdl:input wsaw:Action="http://tempuri.org/IWSConnector/ExecuteEx" message="tns:IWSConnector_ExecuteEx_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IWSConnector/ExecuteExResponse" message="tns:IWSConnector_ExecuteEx_OutputMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="ChangePassword">
+         <wsdl:input wsaw:Action="http://tempuri.org/IWSConnector/ChangePassword" message="tns:IWSConnector_ChangePassword_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IWSConnector/ChangePasswordResponse" message="tns:IWSConnector_ChangePassword_OutputMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IWSConnector/ChangePasswordWSCOperationFaultFault" name="WSCOperationFaultFault" message="tns:IWSConnector_ChangePassword_WSCOperationFaultFault_FaultMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="GetToken">
+         <wsdl:input wsaw:Action="http://tempuri.org/IWSConnector/GetToken" message="tns:IWSConnector_GetToken_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IWSConnector/GetTokenResponse" message="tns:IWSConnector_GetToken_OutputMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IWSConnector/GetTokenWSCOperationFaultFault" name="WSCOperationFaultFault" message="tns:IWSConnector_GetToken_WSCOperationFaultFault_FaultMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="GetTokenInfo">
+         <wsdl:input wsaw:Action="http://tempuri.org/IWSConnector/GetTokenInfo" message="tns:IWSConnector_GetTokenInfo_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IWSConnector/GetTokenInfoResponse" message="tns:IWSConnector_GetTokenInfo_OutputMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IWSConnector/GetTokenInfoWSCOperationFaultFault" name="WSCOperationFaultFault" message="tns:IWSConnector_GetTokenInfo_WSCOperationFaultFault_FaultMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="RefreshToken">
+         <wsdl:input wsaw:Action="http://tempuri.org/IWSConnector/RefreshToken" message="tns:IWSConnector_RefreshToken_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IWSConnector/RefreshTokenResponse" message="tns:IWSConnector_RefreshToken_OutputMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IWSConnector/RefreshTokenWSCOperationFaultFault" name="WSCOperationFaultFault" message="tns:IWSConnector_RefreshToken_WSCOperationFaultFault_FaultMessage" />
+      </wsdl:operation>
+      <wsdl:operation name="RevokeToken">
+         <wsdl:input wsaw:Action="http://tempuri.org/IWSConnector/RevokeToken" message="tns:IWSConnector_RevokeToken_InputMessage" />
+         <wsdl:output wsaw:Action="http://tempuri.org/IWSConnector/RevokeTokenResponse" message="tns:IWSConnector_RevokeToken_OutputMessage" />
+         <wsdl:fault wsaw:Action="http://tempuri.org/IWSConnector/RevokeTokenWSCOperationFaultFault" name="WSCOperationFaultFault" message="tns:IWSConnector_RevokeToken_WSCOperationFaultFault_FaultMessage" />
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="BasicHttpBinding_IWSConnector" type="tns:IWSConnector">
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+      <wsdl:operation name="Execute">
+         <soap:operation soapAction="http://tempuri.org/IWSConnector/Execute" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="ExecuteEx">
+         <soap:operation soapAction="http://tempuri.org/IWSConnector/ExecuteEx" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+      </wsdl:operation>
+      <wsdl:operation name="ChangePassword">
+         <soap:operation soapAction="http://tempuri.org/IWSConnector/ChangePassword" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+         <wsdl:fault name="WSCOperationFaultFault">
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetToken">
+         <soap:operation soapAction="http://tempuri.org/IWSConnector/GetToken" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+         <wsdl:fault name="WSCOperationFaultFault">
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="GetTokenInfo">
+         <soap:operation soapAction="http://tempuri.org/IWSConnector/GetTokenInfo" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+         <wsdl:fault name="WSCOperationFaultFault">
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="RefreshToken">
+         <soap:operation soapAction="http://tempuri.org/IWSConnector/RefreshToken" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+         <wsdl:fault name="WSCOperationFaultFault">
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+         </wsdl:fault>
+      </wsdl:operation>
+      <wsdl:operation name="RevokeToken">
+         <soap:operation soapAction="http://tempuri.org/IWSConnector/RevokeToken" style="document" />
+         <wsdl:input>
+            <soap:body use="literal" />
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal" />
+         </wsdl:output>
+         <wsdl:fault name="WSCOperationFaultFault">
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+            <soap:fault use="literal" name="WSCOperationFaultFault" namespace="" />
+         </wsdl:fault>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="WSConnector">
+      <wsdl:port name="BasicHttpBinding_IWSConnector" binding="tns:BasicHttpBinding_IWSConnector">
+         <soap:address location="http://localhost:5000/PAT.CRM.WSC4/WSConnector.svc" />
+      </wsdl:port>
+      <wsdl:port name="BasicHttpBinding_IWSConnector1" binding="tns:BasicHttpBinding_IWSConnector">
+         <soap:address location="http://localhost:5000/PAT.CRM.WSC4/WSConnector.svc/Compressed" />
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>
