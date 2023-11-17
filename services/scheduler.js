@@ -14,7 +14,7 @@ async function initialize() {
 		//const cdcCron = new Cron("*/3 8-19 * * 1-5", "/CDC/", cdcLink.importTicket)
 		//certbotCron.start()
 	} else {
-		//await jira.runJobs()
+		await jira.runJobs()
 		//await certbot.renew()
 		//testLink.testProjection()
 	}

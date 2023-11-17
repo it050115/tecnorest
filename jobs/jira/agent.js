@@ -7,11 +7,13 @@ const runJobs = async () => {
 	getAuditRecords()
 }
 
+// https://id.atlassian.com/manage-profile/security/api-tokens
+// https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-audit-records/#api-rest-api-3-auditing-record-get
 const getAuditRecords = async () => {
 	const url = "https://grupposcai.atlassian.net/rest/api/3/auditing/record"
 	const options = {
 		headers: {
-			"Authorization": `Basic ${Buffer.from("admin.jira@grupposcai.it:ATATT3xFfGF0zZWcFIlUIz8GrHT-GBaAcGh0dCgBD9SciNGXi8c-1hQnlRHoADP8TBhh0VWSKVDNhFPlHxB__UWUW-qbkRfelBtVCiCrfmMdH5kxZaEM3Vxu4LgIt1kRvphllvhIaoh9bP3mJi00pHV270W87hzWBmVq323aZxlXUVNtgsWw5t0=6CBD4F94").toString("base64")}`,
+			"Authorization": `Basic ${Buffer.from("admin.jira@grupposcai.it:ATATT3xFfGF04o0eBwO5eXinTpQWaN_fhBS6L0msyFQ7TqUn0cQwkYX1PcxLKqNKhG6mMZW6SKKPtgV5RyipYl0wNBkX-p2hemtR_txL22yIgtQnduaS3S4tAUTqISErSF9wf1ASFvhnR76J9i46SBfC_SSerx8C6x_jJRSw0MT_OETkhl916Rg=8CCD6488").toString("base64")}`,
 			"Accept": "application/json",
 		},
 	}
